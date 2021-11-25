@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_REST_API.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Rocket_Elevators_REST_API.Controllers
 {
@@ -103,38 +103,46 @@ namespace Rocket_Elevators_REST_API.Controllers
             return NoContent();
         }
 
-        // PUT: api/Elevators/5/status
+        // PATCH: api/Elevators/5/status
         // update status of an elevator
-        [HttpPut("{id}/status")]
-        public async Task<IActionResult> PutElevatorStatus(int id, string status)
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> PatchElevatorStatus(int id, [FromBody]JsonPatchDocument<Elevator> elevatorPatch)
         {
-            if (status == null)
-            {
-                return BadRequest();
-            }
-
             var elevator = await _context.elevators.FindAsync(id);
-
-            elevator.status = status;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ElevatorExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            elevatorPatch.ApplyTo(elevator);
+            return Content("Successfully updated the status of elevator " + elevator.id + " to " + elevator.status);
         }
+
+
+        // public async Task<IActionResult> PutElevatorStatus(int id, [FromBody] string status)
+        // {
+        //     if (status == null)
+        //     {
+        //         return BadRequest();
+        //     }
+
+        //     var elevator = await _context.elevators.FindAsync(id);
+
+        //     elevator.status = status;
+
+        //     try
+        //     {
+        //         await _context.SaveChangesAsync();
+        //     }
+        //     catch (DbUpdateConcurrencyException)
+        //     {
+        //         if (!ElevatorExists(id))
+        //         {
+        //             return NotFound();
+        //         }
+        //         else
+        //         {
+        //             throw;
+        //         }
+        //     }
+
+        //     return Content("Successfully updated the status of elevator " + elevator.id + " to " + elevator.status);
+        // }
 
         // POST: api/Elevators
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
