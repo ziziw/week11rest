@@ -23,7 +23,7 @@ namespace Rocket_Elevators_REST_API
         public void ConfigureServices(IServiceCollection services)
         {
             // Replace with your connection string.
-            var connectionString = Environment.GetEnvironmentVariable("DEFAULT_ENVIRONMENT");
+            var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
 
             // Replace with your server version and type.
             // Use 'MariaDbServerVersion' for MariaDB.
