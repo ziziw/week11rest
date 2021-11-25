@@ -22,6 +22,8 @@ namespace Rocket_Elevators_REST_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers().AddNewtonsoftJson();
+            
             // Replace with your connection string.
             var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
 
@@ -40,10 +42,6 @@ namespace Rocket_Elevators_REST_API
             );
 
             // services.AddDbContext<ApplicationContext>(opt =>opt.UseInMemoryDatabase("TodoList"));
-
-            services.AddControllers();
-
-
             
             // services.AddSwaggerGen(c =>
             // {
