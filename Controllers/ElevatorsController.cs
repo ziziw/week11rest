@@ -9,7 +9,7 @@ using Rocket_Elevators_REST_API.Models;
 
 namespace Rocket_Elevators_REST_API.Controllers
 {
-    [Route("api/elevators")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ElevatorsController : ControllerBase
     {
