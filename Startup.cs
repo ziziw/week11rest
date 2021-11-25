@@ -44,7 +44,7 @@ namespace Rocket_Elevators_REST_API
             services.AddControllers();
 
 
-            
+
             // services.AddSwaggerGen(c =>
             // {
             //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rocket_Elevators_REST_API", Version = "v1" });
@@ -57,8 +57,8 @@ namespace Rocket_Elevators_REST_API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            //     app.UseSwagger();
-            //     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rocket_Elevators_REST_API v1"));
+                //     app.UseSwagger();
+                //     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rocket_Elevators_REST_API v1"));
             }
 
             app.UseHttpsRedirection();

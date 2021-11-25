@@ -9,6 +9,8 @@ namespace Rocket_Elevators_REST_API.Models
         {
         }
 
+        public DbSet<Battery> batteries { get; set; }
+        public DbSet<Column> columns { get; set; }
         public DbSet<Elevator> elevators { get; set; }
     }
 }
