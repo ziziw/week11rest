@@ -25,6 +25,9 @@ namespace Rocket_Elevators_REST_API
             services.AddControllers().AddNewtonsoftJson();
 
             // Replace with your connection string.
+
+            // NOTE: USE ACTUAL CONNECTION STRING IN CONNECTION FOR PRODUCTION WHEN DEPLOYING!!!
+            
             var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
 
             // Replace with your server version and type.
