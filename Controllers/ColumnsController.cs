@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_REST_API.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Rocket_Elevators_REST_API.Controllers
 {
@@ -40,6 +40,49 @@ namespace Rocket_Elevators_REST_API.Controllers
 
             return column;
         }
+
+
+
+        //-----------------------------------------------------
+        // ADDED ENDPOINTS:
+        //-----------------------------------------------------
+
+
+        // GET: api/Columns/5/status
+        // get specific column's status
+        [HttpGet("{id}/status")]
+        public async Task<ActionResult<String>> GetColumnStatus(int id)
+        {
+            var column = await _context.columns.FindAsync(id);
+
+            if (column == null)
+            {
+                return NotFound();
+            }
+
+            return "Column " + column.id + "'s status is: " + column.status;
+        }
+
+        // PATCH: api/Columns/5
+        // update status (or any single field) of a column using the following format:
+            // [{"op": "replace", "path": "/status", "value": "Offline"}]
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchColumnStatus(int id, [FromBody]JsonPatchDocument<Column> columnPatch)
+        {
+            var column = await _context.columns.FindAsync(id);
+            columnPatch.ApplyTo(column);
+
+            await _context.SaveChangesAsync();
+
+            return Content("Successfully updated column " + column.id);
+        }
+
+
+        //-----------------------------------------------------
+        // END
+        //-----------------------------------------------------
+
+
 
         // PUT: api/Columns/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
