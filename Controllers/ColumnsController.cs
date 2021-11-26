@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_REST_API.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Rocket_Elevators_REST_API.Controllers
 {
@@ -41,6 +42,20 @@ namespace Rocket_Elevators_REST_API.Controllers
             return column;
         }
 
+        // GET: api/Columns/5/status
+        [HttpGet("{id}/status")]
+        public async Task<ActionResult<String>> GetColumnStatus(int id)
+        {
+            var column = await _context.columns.FindAsync(id);
+
+            if (column == null)
+            {
+                return NotFound();
+            }
+
+            return column.status;
+        }
+
         // PUT: api/Columns/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -70,6 +85,15 @@ namespace Rocket_Elevators_REST_API.Controllers
             }
 
             return NoContent();
+        }
+
+        // PATCH: api/Columns/5/status
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> PatchColumnStatus(int id, [FromBody]JsonPatchDocument<Column> columnPatch)
+        {
+            var column = await _context.columns.FindAsync(id);
+            columnPatch.ApplyTo(column);
+            return Content("Successfully updated the status of column " + column.id + " to " + column.status);
         }
 
         // POST: api/Columns

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_REST_API.Models;
+using Microsoft.AspNetCore.JsonPatch;
+
 
 namespace Rocket_Elevators_REST_API.Controllers
 {
@@ -41,6 +43,20 @@ namespace Rocket_Elevators_REST_API.Controllers
             return battery;
         }
 
+        // GET: api/Batteries/5/status
+        [HttpGet("{id}/status")]
+        public async Task<ActionResult<String>> GetBatteryStatus(int id)
+        {
+            var battery = await _context.batteries.FindAsync(id);
+
+            if (battery == null)
+            {
+                return NotFound();
+            }
+
+            return battery.status;
+        }
+
         // PUT: api/Batteries/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -70,6 +86,15 @@ namespace Rocket_Elevators_REST_API.Controllers
             }
 
             return NoContent();
+        }
+
+        // PATCH: api/Batteries/5/status
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> PatchBatteryStatus(int id, [FromBody]JsonPatchDocument<Battery> batteryPatch)
+        {
+            var battery = await _context.batteries.FindAsync(id);
+            batteryPatch.ApplyTo(battery);
+            return Content("Successfully updated the status of battery " + battery.id + " to " + battery.status);
         }
 
         // POST: api/Batteries
