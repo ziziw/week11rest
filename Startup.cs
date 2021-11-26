@@ -23,7 +23,7 @@ namespace Rocket_Elevators_REST_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddNewtonsoftJson();
-            
+
             // Replace with your connection string.
             var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
 
@@ -42,7 +42,7 @@ namespace Rocket_Elevators_REST_API
             );
 
             // services.AddDbContext<ApplicationContext>(opt =>opt.UseInMemoryDatabase("TodoList"));
-            
+
             // services.AddSwaggerGen(c =>
             // {
             //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rocket_Elevators_REST_API", Version = "v1" });
@@ -55,8 +55,8 @@ namespace Rocket_Elevators_REST_API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            //     app.UseSwagger();
-            //     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rocket_Elevators_REST_API v1"));
+                //     app.UseSwagger();
+                //     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rocket_Elevators_REST_API v1"));
             }
 
             app.UseHttpsRedirection();
