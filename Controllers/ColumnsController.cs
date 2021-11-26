@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_REST_API.Models;
@@ -42,7 +41,15 @@ namespace Rocket_Elevators_REST_API.Controllers
             return column;
         }
 
+
+
+        //-----------------------------------------------------
+        // ADDED ENDPOINTS:
+        //-----------------------------------------------------
+
+
         // GET: api/Columns/5/status
+        // get specific column's status
         [HttpGet("{id}/status")]
         public async Task<ActionResult<String>> GetColumnStatus(int id)
         {
@@ -53,8 +60,29 @@ namespace Rocket_Elevators_REST_API.Controllers
                 return NotFound();
             }
 
-            return column.status;
+            return "Column " + column.id + "'s status is: " + column.status;
         }
+
+        // PATCH: api/Columns/5
+        // update status (or any single field) of a column using the following format:
+            // [{"op": "replace", "path": "/status", "value": "Offline"}]
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchColumnStatus(int id, [FromBody]JsonPatchDocument<Column> columnPatch)
+        {
+            var column = await _context.columns.FindAsync(id);
+            columnPatch.ApplyTo(column);
+
+            await _context.SaveChangesAsync();
+
+            return Content("Successfully updated column " + column.id);
+        }
+
+
+        //-----------------------------------------------------
+        // END
+        //-----------------------------------------------------
+
+
 
         // PUT: api/Columns/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -85,15 +113,6 @@ namespace Rocket_Elevators_REST_API.Controllers
             }
 
             return NoContent();
-        }
-
-        // PATCH: api/Columns/5/status
-        [HttpPatch("{id}/status")]
-        public async Task<IActionResult> PatchColumnStatus(int id, [FromBody]JsonPatchDocument<Column> columnPatch)
-        {
-            var column = await _context.columns.FindAsync(id);
-            columnPatch.ApplyTo(column);
-            return Content("Successfully updated the status of column " + column.id + " to " + column.status);
         }
 
         // POST: api/Columns
