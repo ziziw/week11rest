@@ -18,6 +18,7 @@ namespace Rocket_Elevators_REST_API.Models
         public DbSet<Address> addresses {get; set;}
 
         public DbSet<Employee> employees {get; set;}
+        public DbSet<Building_Detail> building_details {get; set;}
 
     }
     public class PostgreApplicationContext : DbContext {

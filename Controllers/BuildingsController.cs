@@ -44,7 +44,7 @@ namespace Rocket_Elevators_REST_API.Controllers
             var customer = await _context.customers.FindAsync(id);
             var returnString = "";
             foreach(var factIntervention in await factInterventions){
-                returnString = returnString + factIntervention.ToString();
+                returnString = returnString + factIntervention.ToString() + "\n";
             }
             return returnString + "Customer ID: " + customer.id;
 
