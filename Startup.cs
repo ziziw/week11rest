@@ -25,9 +25,7 @@ namespace Rocket_Elevators_REST_API
         {
             services.AddControllers().AddNewtonsoftJson();
 
-            // Replace with your connection string.
-
-            // NOTE: USE ACTUAL CONNECTION STRING IN CONNECTION FOR PRODUCTION WHEN DEPLOYING!!!
+            // Postgres connection string
             
             var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
             string connString =
@@ -39,8 +37,13 @@ namespace Rocket_Elevators_REST_API
                     "5432",
                     "Codeboxx1!");
 
-
             using (var conn = new NpgsqlConnection(connString));
+
+            services.AddDbContext<PostgreApplicationContext>(options => options.UseNpgsql(connString));
+
+            // MySQL Connection String
+
+            // NOTE: USE ACTUAL CONNECTION STRING IN CONNECTION FOR PRODUCTION WHEN DEPLOYING!!!
 
             // Replace with your server version and type.
             // Use 'MariaDbServerVersion' for MariaDB.
@@ -56,14 +59,6 @@ namespace Rocket_Elevators_REST_API
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
             );
-            services.AddDbContext<PostgreApplicationContext>(options => options.UseNpgsql(connString));
-
-            // services.AddDbContext<ApplicationContext>(opt =>opt.UseInMemoryDatabase("TodoList"));
-
-            // services.AddSwaggerGen(c =>
-            // {
-            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rocket_Elevators_REST_API", Version = "v1" });
-            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
