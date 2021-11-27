@@ -35,7 +35,7 @@ namespace Rocket_Elevators_REST_API.Controllers{
             {
                 return NotFound();
             }
-            return "factIntervention start intervention:" + factIntervention.start_intervention + "factIntervention stop intervention " + factIntervention.end_intervention + " address: " +address.number_and_street;
+            return "factIntervention start intervention:" + factIntervention.start_intervention + "\nfactIntervention stop intervention " + factIntervention.end_intervention + "\naddress: " +address.number_and_street;
         } 
         
         

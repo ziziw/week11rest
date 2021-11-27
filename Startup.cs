@@ -27,7 +27,7 @@ namespace Rocket_Elevators_REST_API
 
             // Postgres connection string
             
-            var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
+            var connectionString = "Server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;Port=3306;Database=JasmineGrewal;Uid=codeboxx;Password=Codeboxx1!;";
             string connString =
                 String.Format(
                     "Server={0};Username={1};Database={2};Port={3};Password={4};",
