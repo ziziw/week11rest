@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_REST_API.Models;
+using Npgsql;
 
 namespace Rocket_Elevators_REST_API
 {
@@ -29,12 +30,24 @@ namespace Rocket_Elevators_REST_API
             // NOTE: USE ACTUAL CONNECTION STRING IN CONNECTION FOR PRODUCTION WHEN DEPLOYING!!!
             
             var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
+            string connString =
+                String.Format(
+                    "Server={0};Username={1};Database={2};Port={3};Password={4};",
+                    "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com",
+                    "codeboxx",
+                    "jkg",
+                    "5432",
+                    "Codeboxx1!");
+
+
+            using (var conn = new NpgsqlConnection(connString));
 
             // Replace with your server version and type.
             // Use 'MariaDbServerVersion' for MariaDB.
             // Alternatively, use 'ServerVersion.AutoDetect(connectionString)'.
             // For common usages, see pull request #1233.
             var serverVersion = new MySqlServerVersion(ServerVersion.AutoDetect(connectionString));
+
 
             // Replace 'YourDbContext' with the name of your own DbContext derived class.
             services.AddDbContext<ApplicationContext>(options =>
@@ -43,6 +56,7 @@ namespace Rocket_Elevators_REST_API
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
             );
+            services.AddDbContext<PostgreApplicationContext>(options => options.UseNpgsql(connString));
 
             // services.AddDbContext<ApplicationContext>(opt =>opt.UseInMemoryDatabase("TodoList"));
 
