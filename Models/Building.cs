@@ -28,7 +28,7 @@ namespace Rocket_Elevators_REST_API.Models
 
         public override string ToString()
         {
-            return base.ToString();
+            return "Building ID: " + this.id;
         }
     }
 }
