@@ -45,8 +45,18 @@ NOTE: for PATCH, update status (or any single field) using the following format:
 ```[HttpGet("intervention")]```
 [Example](https://codeboxx-week-8-rest-api.azurewebsites.net/api/buildings/intervention)
 
+### Retrieve customer information and the list of interventions that took place for a specific building
+```[HttpGet("{id}/bonus2")]```
+[Example](https://codeboxx-week-8-rest-api.azurewebsites.net/api/buildings/5/bonus2)
+
 ## Leads Controller
 
-### Retrieving a list of Leads created in the last 30 days who have not yet become customers
+### Retrieve a list of Leads created in the last 30 days who have not yet become customers
 ```[HttpGet("potentia l")]```
 [Example](https://codeboxx-week-8-rest-api.azurewebsites.net/api/leads/potential)
+
+## FactInterventionsController
+
+### Retrieve the address of the building, the beginning and the end of the intervention for a specific intervention.
+```[HttpGet("{id}/bonus1")]```
+[Example](https://codeboxx-week-8-rest-api.azurewebsites.net/api/factinterventions/5/bonus1)
