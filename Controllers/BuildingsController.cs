@@ -12,10 +12,12 @@ namespace Rocket_Elevators_REST_API.Controllers
     public class BuildingsController : ControllerBase
     {
         private readonly ApplicationContext _context;
+        private readonly PostgreApplicationContext _context2;
 
-        public BuildingsController(ApplicationContext context)
+        public BuildingsController(ApplicationContext context,PostgreApplicationContext context2)
         {
             _context = context;
+            _context2 = context2;
         }
 
         // GET: api/Buildings
@@ -81,6 +83,19 @@ namespace Rocket_Elevators_REST_API.Controllers
             }
 
             return NoContent();
+        }
+        [HttpGet("{id}/bonus2")]
+        public async Task<ActionResult<string>> getInterventionForBuilding(int id){
+            var building = await _context.buildings.FindAsync(id);
+        
+            var factInterventions = _context2.fact_interventions.Where(f => f.building_id == building.id).ToListAsync();
+            var customer = await _context.customers.FindAsync(id);
+            var returnString = "";
+            foreach(var factIntervention in await factInterventions){
+                returnString = returnString + factIntervention.ToString();
+            }
+            return returnString + "Customer ID: " + customer.id;
+
         }
 
         // POST: api/Buildings
