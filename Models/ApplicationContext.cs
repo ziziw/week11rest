@@ -17,6 +17,8 @@ namespace Rocket_Elevators_REST_API.Models
         public DbSet<Customer> customers { get; set; }
         public DbSet<Address> addresses {get; set;}
 
+        public DbSet<Employee> employees {get; set;}
+
     }
     public class PostgreApplicationContext : DbContext {
         public PostgreApplicationContext(DbContextOptions<PostgreApplicationContext> options)
