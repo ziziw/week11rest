@@ -5,6 +5,8 @@ In order to connect our information system to the equipment in operation through
 NOTE: for PATCH, update status (or any single field) using the following format:
                  [{"op": "replace", "path": "/status", "value": "Offline"}]
 
+#### Postman Link: https://www.getpostman.com/collections/d9dc2dc9c8365c5a4ae8
+
 ## Batteries Controller
 
 ### Retrieve the current status of a specific Battery
@@ -52,7 +54,7 @@ NOTE: for PATCH, update status (or any single field) using the following format:
 ## Leads Controller
 
 ### Retrieve a list of Leads created in the last 30 days who have not yet become customers
-```[HttpGet("potentia l")]```
+```[HttpGet("potential")]```
 [Example](https://codeboxx-week-8-rest-api.azurewebsites.net/api/leads/potential)
 
 ## FactInterventionsController
@@ -60,3 +62,9 @@ NOTE: for PATCH, update status (or any single field) using the following format:
 ### Retrieve the address of the building, the beginning and the end of the intervention for a specific intervention.
 ```[HttpGet("{id}/bonus1")]```
 [Example](https://codeboxx-week-8-rest-api.azurewebsites.net/api/factinterventions/5/bonus1)
+
+## EmployeesController
+
+### Retrieve all interventions carried out by a specified employee with the buildings associated with these interventions including the details (Table BuildingDetails) associated with these buildings
+```[HttpGet("{id}/bonus3")]```
+[Example](https://codeboxx-week-8-rest-api.azurewebsites.net/api/employees/5/bonus3)
