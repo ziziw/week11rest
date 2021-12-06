@@ -26,7 +26,7 @@ namespace Rocket_Elevators_REST_API
             services.AddControllers().AddNewtonsoftJson();
 
             // Postgres connection string
-            
+
             string connString =
                 String.Format(
                     "Server={0};Username={1};Database={2};Port={3};Password={4};",
@@ -36,14 +36,16 @@ namespace Rocket_Elevators_REST_API
                     "5432",
                     "Codeboxx1!");
 
-            using (var conn = new NpgsqlConnection(connString));
+            using (var conn = new NpgsqlConnection(connString)) ;
 
             services.AddDbContext<PostgreApplicationContext>(options => options.UseNpgsql(connString));
 
             // MySQL Connection String
 
             // NOTE: USE ACTUAL CONNECTION STRING IN CONNECTION FOR PRODUCTION WHEN DEPLOYING!!!
-            var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
+            // var connectionString = Environment.GetEnvironmentVariable("DEFAULT__ENVIRONMENT");
+            var connectionString = "server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;port=3306;database=ZiWangChen;uid=codeboxx;password=Codeboxx1!";
+
 
             // Replace with your server version and type.
             // Use 'MariaDbServerVersion' for MariaDB.

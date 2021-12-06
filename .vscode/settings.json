@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/7013e52e-5248-4806-bbdd-6f7f616a55e8/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/Codeboxx-Week-8-REST-API",
-    "appService.deploySubpath": "publish"
+    "appService.deploySubpath": "publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/10ce061c-9bd4-4c6f-a60a-b67940fe6ad3/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/rickyzchen"
 }
