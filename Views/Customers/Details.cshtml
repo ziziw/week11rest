@@ -1,0 +1,105 @@
+@model Rocket_Elevators_REST_API.Models.Customer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.user_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.user_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.customer_creation_date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.customer_creation_date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.company_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.company_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.company_headquarters_address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.company_headquarters_address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.full_name_of_the_company_contact)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.full_name_of_the_company_contact)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.company_contact_phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.company_contact_phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.email_of_the_company_contact)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.email_of_the_company_contact)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.company_description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.company_description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.technical_authority_phone_for_service)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.technical_authority_phone_for_service)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.technical_manager_email_for_service)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.technical_manager_email_for_service)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.updated_at)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.updated_at)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.address_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.address_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.full_name_of_service_technical_authority)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.full_name_of_service_technical_authority)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

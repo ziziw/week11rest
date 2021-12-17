@@ -1,0 +1,115 @@
+@model IEnumerable<Rocket_Elevators_REST_API.Models.Customer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.user_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_creation_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.company_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.company_headquarters_address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.full_name_of_the_company_contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.company_contact_phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email_of_the_company_contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.company_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.technical_authority_phone_for_service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.technical_manager_email_for_service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.updated_at)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.full_name_of_service_technical_authority)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_creation_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.company_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.company_headquarters_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.full_name_of_the_company_contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.company_contact_phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email_of_the_company_contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.company_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.technical_authority_phone_for_service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.technical_manager_email_for_service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.full_name_of_service_technical_authority)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,99 @@
+@model Rocket_Elevators_REST_API.Models.Customer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="user_id" class="control-label"></label>
+                <input asp-for="user_id" class="form-control" />
+                <span asp-validation-for="user_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="customer_creation_date" class="control-label"></label>
+                <input asp-for="customer_creation_date" class="form-control" />
+                <span asp-validation-for="customer_creation_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="company_name" class="control-label"></label>
+                <input asp-for="company_name" class="form-control" />
+                <span asp-validation-for="company_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="company_headquarters_address" class="control-label"></label>
+                <input asp-for="company_headquarters_address" class="form-control" />
+                <span asp-validation-for="company_headquarters_address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="full_name_of_the_company_contact" class="control-label"></label>
+                <input asp-for="full_name_of_the_company_contact" class="form-control" />
+                <span asp-validation-for="full_name_of_the_company_contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="company_contact_phone" class="control-label"></label>
+                <input asp-for="company_contact_phone" class="form-control" />
+                <span asp-validation-for="company_contact_phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email_of_the_company_contact" class="control-label"></label>
+                <input asp-for="email_of_the_company_contact" class="form-control" />
+                <span asp-validation-for="email_of_the_company_contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="company_description" class="control-label"></label>
+                <input asp-for="company_description" class="form-control" />
+                <span asp-validation-for="company_description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="technical_authority_phone_for_service" class="control-label"></label>
+                <input asp-for="technical_authority_phone_for_service" class="form-control" />
+                <span asp-validation-for="technical_authority_phone_for_service" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="technical_manager_email_for_service" class="control-label"></label>
+                <input asp-for="technical_manager_email_for_service" class="form-control" />
+                <span asp-validation-for="technical_manager_email_for_service" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="updated_at" class="control-label"></label>
+                <input asp-for="updated_at" class="form-control" />
+                <span asp-validation-for="updated_at" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address_id" class="control-label"></label>
+                <input asp-for="address_id" class="form-control" />
+                <span asp-validation-for="address_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="full_name_of_service_technical_authority" class="control-label"></label>
+                <input asp-for="full_name_of_service_technical_authority" class="form-control" />
+                <span asp-validation-for="full_name_of_service_technical_authority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>
