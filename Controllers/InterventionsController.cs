@@ -20,6 +20,13 @@ namespace Rocket_Elevators_REST_API.Controllers
             _context = context;
         }
 
+        // GET all interventions
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Intervention>>> GetInterventions()
+        {
+            return await _context.interventions.ToListAsync();
+        }
+
         // GET: api/Interventions/pending
         [HttpGet("pending")]
         public async Task<ActionResult<IEnumerable<Intervention>>> GetinterventionsPending()

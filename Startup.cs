@@ -32,7 +32,7 @@ namespace Rocket_Elevators_REST_API
                     "Server={0};Username={1};Database={2};Port={3};Password={4};",
                     "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com",
                     "codeboxx",
-                    "jkg",
+                    "ZiWangChen",
                     "5432",
                     "Codeboxx1!");
 
